@@ -54,7 +54,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ElevatedButton(onPressed: (){
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => EnfermeirosPage()),
+                MaterialPageRoute(builder: (context) => const EnfermeirosPage()),
               );
             },
                 child: const Text('Enfermeiros(a)'))
@@ -68,6 +68,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
 //Tela Login
 class EnfermeirosPage extends StatelessWidget {
+  const EnfermeirosPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -140,12 +142,12 @@ class EnfermeirosPage extends StatelessWidget {
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.greenAccent,
-                        minimumSize: Size(250,45)
+                        minimumSize: const Size(250,45)
                     ),
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => CadastroPaciente()),
+                        MaterialPageRoute(builder: (context) => const CadastroPaciente()),
                       );
                     },
 
@@ -155,7 +157,7 @@ class EnfermeirosPage extends StatelessWidget {
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.amberAccent,
-                      minimumSize: Size(240,45)
+                      minimumSize: const Size(240,45)
                     ),
                     onPressed: () {
                       // Lógica para sair
@@ -166,7 +168,7 @@ class EnfermeirosPage extends StatelessWidget {
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.white54,
-                      minimumSize: Size(240,45)
+                      minimumSize: const Size(240,45)
                     ),
                     onPressed: () {
                       // Lógica para esquecer a senha
@@ -188,6 +190,8 @@ class EnfermeirosPage extends StatelessWidget {
 //Tela Cadastro de Paciente
 
 class CadastroPaciente extends StatelessWidget {
+  const CadastroPaciente({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -258,7 +262,7 @@ class CadastroPaciente extends StatelessWidget {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => NovaPuerpera()),
+                        MaterialPageRoute(builder: (context) => const NovaPuerpera()),
                       );
                     },
 
@@ -278,7 +282,7 @@ class CadastroPaciente extends StatelessWidget {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => PuerperasCadastradas()),
+                        MaterialPageRoute(builder: (context) => const PuerperasCadastradas()),
                       );
                     },
                     child: const Text('Puérpera Cadastrada', style: TextStyle(color: Colors.black)),
@@ -321,6 +325,8 @@ class CadastroPaciente extends StatelessWidget {
 
 //Nova Puerpera
 class NovaPuerpera extends StatelessWidget {
+  const NovaPuerpera({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -397,7 +403,7 @@ class NovaPuerpera extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => Preparatorio()),
+                      MaterialPageRoute(builder: (context) => const Preparatorio()),
                     );
                   },
                   style: ElevatedButton.styleFrom(
@@ -424,6 +430,8 @@ class NovaPuerpera extends StatelessWidget {
 //Preparatorio
 
 class Preparatorio extends StatelessWidget {
+  const Preparatorio({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -462,7 +470,7 @@ class Preparatorio extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => ExameFisico()),
+                  MaterialPageRoute(builder: (context) => const ExameFisico()),
                 );
               },
               style: ElevatedButton.styleFrom(
@@ -481,7 +489,7 @@ class Preparatorio extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => CheckUp2()),
+                  MaterialPageRoute(builder: (context) => const CheckUp2()),
                 );
               },
               style: ElevatedButton.styleFrom(
@@ -507,14 +515,19 @@ class Preparatorio extends StatelessWidget {
 //ExameFisico
 
 class ExameFisico extends StatefulWidget {
+  const ExameFisico({super.key});
+
   @override
   State<ExameFisico> createState() => _ExameFisicoState();
 }
 
 class _ExameFisicoState extends State<ExameFisico> {
-  final List<String> opcoes = ["Opção 1", "Opção 2", "Opção 3"];
+  final List<String> opcoes = ["Nada", "Opção 2", "Opção 3"];
+  final List<String> mucosa = ["Nada", "Hipocorada", "Normacorada", "Hipercorada"];
+  final List<String> abdomen = ["Nada", "flácido", "distendido"];
+  final List<String> utero = ["Nada", "adequado", "inadequado", "não palpável"];
 
-  String dropdownValue = "Opção 1";
+  String dropdownValue = "Nada";
  // Valor inicial do dropdown
   @override
   Widget build(BuildContext context) {
@@ -556,7 +569,7 @@ class _ExameFisicoState extends State<ExameFisico> {
             const SizedBox(height: 20),
             DropdownButtonFormField<String>(
               decoration: const InputDecoration(labelText: 'Mucosa'),
-              items: ["Opção 1", "Opção 2", "Opção 3"].map((String value) {
+              items: ["Nada", "Hipocorada", "Normacorada", "Hipercorada"].map((String value) {
                 return DropdownMenuItem<String>(
                   value: value,
                   child: Text(value),
@@ -565,7 +578,7 @@ class _ExameFisicoState extends State<ExameFisico> {
             ),
             DropdownButtonFormField<String>(
               decoration: const InputDecoration(labelText: 'Abdômen'),
-              items: ["Opção 1", "Opção 2", "Opção 3"].map((String value) {
+              items: ["Nada", "flácido", "distendido"].map((String value) {
                 return DropdownMenuItem<String>(
                   value: value,
                   child: Text(value),
@@ -574,13 +587,23 @@ class _ExameFisicoState extends State<ExameFisico> {
             ),
             DropdownButtonFormField<String>(
               decoration: const InputDecoration(labelText: 'Útero'),
-              items: ["Opção 1", "Opção 2", "Opção 3"].map((String value) {
+              items: ["Nada", "adequado", "inadequado", "não palpável"].map((String value) {
                 return DropdownMenuItem<String>(
                   value: value,
                   child: Text(value),
                 );
               }).toList(), onChanged: (String? value) {  },
             ),
+            Row(
+              children: [
+                Expanded(child: TextField(decoration: InputDecoration(labelText: 'Altura do Fundo Últerino:'))),
+              ],
+            ),
+
+
+
+
+            /*
             DropdownButtonFormField<String>(
               decoration: const InputDecoration(labelText: 'Altura do Fundo Úterino'),
               items: ["Opção 1", "Opção 2", "Opção 3"].map((String value) {
@@ -590,6 +613,7 @@ class _ExameFisicoState extends State<ExameFisico> {
                 );
               }).toList(), onChanged: (String? value) {  },
             ),
+             */
             DropdownButtonFormField<String>(
               decoration: const InputDecoration(labelText: 'Lóquios'),
               items: ["Opção 1", "Opção 2", "Opção 3"].map((String value) {
@@ -615,7 +639,7 @@ class _ExameFisicoState extends State<ExameFisico> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => CheckUp()),
+                    MaterialPageRoute(builder: (context) => const CheckUp()),
                   );
                 },
                 style: ElevatedButton.styleFrom(
@@ -641,6 +665,8 @@ class _ExameFisicoState extends State<ExameFisico> {
 //CheckUP
 
 class CheckUp extends StatefulWidget {
+  const CheckUp({super.key});
+
   @override
   State<CheckUp> createState() => _CheckUpState();
 }
@@ -728,7 +754,7 @@ class _CheckUpState extends State<CheckUp> {
                       ),
                     ),
                   ),
-                  Text('ml')
+                  const Text('ml')
                 ],
               ),
             ),
@@ -758,7 +784,7 @@ class _CheckUpState extends State<CheckUp> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => CheckUp2()),
+                    MaterialPageRoute(builder: (context) => const CheckUp2()),
                   );
                 },
                 style: ElevatedButton.styleFrom(
@@ -794,6 +820,8 @@ class _CheckUpState extends State<CheckUp> {
 
 
 class CheckUp2 extends StatefulWidget {
+  const CheckUp2({super.key});
+
   @override
   State<CheckUp2> createState() => _CheckUp2State();
 }
@@ -880,7 +908,7 @@ class _CheckUp2State extends State<CheckUp2> {
                           });
                         },
                       ),
-                      Text('Complicação'),
+                      const Text('Complicação'),
                     ],
                   ),
                 ],
@@ -920,7 +948,7 @@ class _CheckUp2State extends State<CheckUp2> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Preparatorio()),
+                    MaterialPageRoute(builder: (context) => const Preparatorio()),
                   );
                 },
                 style: ElevatedButton.styleFrom(
@@ -955,6 +983,8 @@ class _CheckUp2State extends State<CheckUp2> {
 //Puerpera Cadastrada
 
 class PuerperasCadastradas extends StatelessWidget {
+  const PuerperasCadastradas({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -1009,7 +1039,7 @@ class RowItem extends StatelessWidget {
   final String number;
   final Color color;
 
-  const RowItem({required this.number, required this.color});
+  const RowItem({super.key, required this.number, required this.color});
 
   @override
   Widget build(BuildContext context) {
@@ -1026,7 +1056,7 @@ class RowItem extends StatelessWidget {
           child: Center(
             child: Text(
               number,
-              style: TextStyle(color: Colors.white),
+              style: const TextStyle(color: Colors.white),
             ),
           ),
         ),
@@ -1041,7 +1071,7 @@ class RowItem extends StatelessWidget {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10),
             ),
-            minimumSize: Size(240,45)
+            minimumSize: const Size(240,45)
           ),
           child: const Text('Puérpera', style: TextStyle(color: Colors.black),),
         ),
